@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Expenses</title>
+</head>
+<body>
+    <h1>Expenses</h1>
+    <a href="/expenses/add">Add New Expense</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="expense : ${expenses}">
+                <td th:text="${expense.description}"></td>
+                <td th:text="${expense.amount}"></td>
+                <td th:text="${expense.category}"></td>
+                <td th:text="${expense.date}"></td>
+                <td>
+                    <a th:href="@{/expenses/delete/{id}(id=${expense.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
