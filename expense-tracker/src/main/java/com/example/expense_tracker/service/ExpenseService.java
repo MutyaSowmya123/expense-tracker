@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ExpenseService {
@@ -35,6 +36,6 @@ public class ExpenseService {
                         (String) row[0],
                         ((Number) row[1]).doubleValue()
                 ))
-                .toList();
+                .collect(Collectors.toList());
     }
 }
