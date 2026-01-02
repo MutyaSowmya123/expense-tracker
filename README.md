@@ -55,5 +55,3 @@ Password: demo123
 
 ---
 
-## 📂 Project Structure
-
