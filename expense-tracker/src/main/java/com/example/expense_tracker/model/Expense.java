@@ -1,11 +1,13 @@
 package com.example.expense_tracker.model;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import java.time.LocalDate;
 
 @Entity
 public class Expense {
@@ -15,8 +17,12 @@ public class Expense {
     private Long id;
 
     private String description;
+
     private double amount;
+
     private String category;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
 
     // Getters and Setters
