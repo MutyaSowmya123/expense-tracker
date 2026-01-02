@@ -1,5 +1,6 @@
 package com.example.expense_tracker.service;
 
+import com.example.expense_tracker.dto.ChartPoint;
 import com.example.expense_tracker.model.Expense;
 import com.example.expense_tracker.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,14 @@ public class ExpenseService {
     // Method to delete an expense by ID
     public void deleteExpense(Long id) {
         expenseRepository.deleteById(id);
+    }
+    
+    public List<ChartPoint> getCategorySummary() {
+        return expenseRepository.sumByCategory().stream()
+                .map(row -> new ChartPoint(
+                        (String) row[0],
+                        ((Number) row[1]).doubleValue()
+                ))
+                .toList();
     }
 }
